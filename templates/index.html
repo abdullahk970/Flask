@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD App</title>
+</head>
+<body>
+    <h1>Items List</h1>
+    <a href="{{ url_for('add_item') }}">Add New Item</a>
+    <ul>
+    {% for item in items.items %}
+        <li>
+            <strong>{{ item.title }}</strong> - {{ item.description }}
+            <a href="{{ url_for('edit_item', id=item.id) }}">Edit</a>
+            <form action="{{ url_for('delete_item', id=item.id) }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    {% else %}
+        <li>No items found.</li>
+    {% endfor %}
+    </ul>
+
+    {% if items.has_prev %}
+        <a href="{{ url_for('index', page=items.prev_num) }}">Prev</a>
+    {% endif %}
+    {% if items.has_next %}
+        <a href="{{ url_for('index', page=items.next_num) }}">Next</a>
+    {% endif %}
+</body>
+</html>

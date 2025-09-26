@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Item</title>
+</head>
+<body>
+    <h1>Add Item</h1>
+    <form method="POST">
+        <label>Title:</label>
+        <input type="text" name="title" required><br><br>
+        <label>Description:</label>
+        <textarea name="description" required></textarea><br><br>
+        <button type="submit">Add</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to list</a>
+</body>
+</html>
